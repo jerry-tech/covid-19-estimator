@@ -5,11 +5,11 @@ const covid19ImpactEstimator = (data) => {
         impact: {}, // your best case estimation
         severeImpact: {} // your severe case estimation
     };
-    /*estimate the number of currently infected for IMPACT && severeImpact*/
+    // estimate the number of currently infected for IMPACT && severeImpact
     record.impact.currentlyInfected = data.reportedCases * 10;
     record.severeImpact.currentlyInfected = data.reportedCases * 50;
 
-    /* infectionsByRequestedTime for impact && severeImpact */
+    // infectionsByRequestedTime for impact && severeImpact 
     record.impact.infectionsByRequestedTime = record.impact.currentlyInfected * Math.pow(2, 9);
     record.severeImpact.infectionsByRequestedTime = record.severeImpact.currentlyInfected * Math.pow(2, 9);
 
