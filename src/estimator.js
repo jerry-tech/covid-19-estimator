@@ -10,8 +10,8 @@ const covid19ImpactEstimator = (data) => {
     record.severeImpact.currentlyInfected = data.reportedCases * 50;
 
     // infectionsByRequestedTime for impact && severeImpact 
-    record.impact.infectionsByRequestedTime = record.impact.currentlyInfected * Math.pow(2, 9);
-    record.severeImpact.infectionsByRequestedTime = record.severeImpact.currentlyInfected * Math.pow(2, 9);
+    record.impact.infectionsByRequestedTime = record.impact.currentlyInfected * 512;
+    record.severeImpact.infectionsByRequestedTime = record.severeImpact.currentlyInfected * 512;
 
     // 15% percent calculation of impact and severe impact
     record.impact.severeCasesByRequestedTime = 0.15 * record.impact.infectionsByRequestedTime;
@@ -32,7 +32,7 @@ const covid19ImpactEstimator = (data) => {
     // estimation of how much money the economy is likely to lose daily form impact && severe impact
     record.impact.dollarsInFlight = Math.round((record.impact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD) / 100);
     record.severeImpact.dollarsInFlight = Math.round((record.severeImpact.infectionsByRequestedTime * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD) / 100);
-   
+
     return record;
 };
 
