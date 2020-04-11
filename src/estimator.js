@@ -5,7 +5,7 @@ const covid19ImpactEstimator = (data) => {
     impact: {}, // your best case estimation
     severeImpact: {} // your severe case estimation
   };
-  // estimate the number of currently infected for IMPACT && severeImpact
+    // estimate the number of currently infected for IMPACT && severeImpact
   record.impact.currentlyInfected = data.reportedCases * 10;
   record.severeImpact.currentlyInfected = data.reportedCases * 50;
 
@@ -21,9 +21,9 @@ const covid19ImpactEstimator = (data) => {
 
   // total number of hospitalBedsByRequestedTime for impact && severe impact
   record.impact.hospitalBedsByRequestedTime = Math.round((0.35 * data.totalHospitalBeds)
-    - record.impact.severeCasesByRequestedTime);
+     - record.impact.severeCasesByRequestedTime);
   record.severeImpact.hospitalBedsByRequestedTime = Math.round((0.35 * data.totalHospitalBeds)
-    - record.severeImpact.severeCasesByRequestedTime);
+     - record.severeImpact.severeCasesByRequestedTime);
 
   // casesForICUByRequestedTime for impact && severe impact
   record.impact.casesForICUByRequestedTime = 0.05 * record.impact.infectionsByRequestedTime;
@@ -38,26 +38,11 @@ const covid19ImpactEstimator = (data) => {
 
   // estimation of how much money the economy is likely to lose daily form impact && severe impact
   record.impact.dollarsInFlight = Math.round((record.impact.infectionsByRequestedTime
-    * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD) / 100);
+         * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD) / 100);
   record.severeImpact.dollarsInFlight = Math.round((record.severeImpact.infectionsByRequestedTime
-    * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD) / 100);
+        * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD) / 100);
 
-  
+  return record;
 };
-
-const data = {
-  region: {
-    name: 'Africa',
-    avgAge: 19.7,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.71
-  },
-  periodType: 'days',
-  timeToElapse: 58,
-  reportedCases: 674,
-  population: 66622705,
-  totalHospitalBeds: 1380614
-};
-covid19ImpactEstimator(data);
 
 export default covid19ImpactEstimator;
