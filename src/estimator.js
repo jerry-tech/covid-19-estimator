@@ -13,16 +13,18 @@ const covid19ImpactEstimator = (data) => {
   // infectionsByRequestedTime for impact && severeImpact
   let calDay = null;
   const period = data.timeToElapse;
-  if(data.periodType === 'days'){
+  if (data.periodType === 'days') {
     calDay = period;
-  }else if(data.periodType === 'weeks'){
+  } else if (data.periodType === 'weeks') {
     calDay = period * 7;
-  }else if(data.periodType === 'month'){
+  } else if (data.periodType === 'month') {
     calDay = period * 30;
   }
   const factor = (calDay / 3);
-  record.impact.infectionsByRequestedTime = Math.floor(record.impact.currentlyInfected * (2 ** factor));
-  record.severeImpact.infectionsByRequestedTime = Math.floor(record.severeImpact.currentlyInfected * (2 ** factor));
+  record.impact.infectionsByRequestedTime = Math.floor(record.impact.currentlyInfected
+    * (2 ** factor));
+  record.severeImpact.infectionsByRequestedTime = Math.floor(record.severeImpact.currentlyInfected
+    * (2 ** factor));
 
   // 15% percent calculation of impact and severe impact
   record.impact.severeCasesByRequestedTime = Math.floor(0.15
@@ -37,7 +39,8 @@ const covid19ImpactEstimator = (data) => {
     - record.severeImpact.severeCasesByRequestedTime);
 
   // casesForICUByRequestedTime for impact && severe impact
-  record.impact.casesForICUByRequestedTime = Math.floor(0.05 * record.impact.infectionsByRequestedTime);
+  record.impact.casesForICUByRequestedTime = Math.floor(0.05
+    * record.impact.infectionsByRequestedTime);
   record.severeImpact.casesForICUByRequestedTime = Math.floor(0.05
     * record.severeImpact.infectionsByRequestedTime);
 
