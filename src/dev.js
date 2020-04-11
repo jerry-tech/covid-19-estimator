@@ -1,2 +1,2 @@
-require('@babel/register')
-require('./estimator')
+require('@babel/register');
+require('./estimator');
