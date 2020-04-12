@@ -21,39 +21,39 @@ const covid19ImpactEstimator = (data) => {
     calDay = period * 30;
   }
   const factor = Math.trunc(calDay / 3);
-  record.impact.infectionsByRequestedTime = Math.floor(record.impact.currentlyInfected
+  record.impact.infectionsByRequestedTime = Math.trunc(record.impact.currentlyInfected
     * (2 ** factor));
-  record.severeImpact.infectionsByRequestedTime = Math.floor(record.severeImpact.currentlyInfected
+  record.severeImpact.infectionsByRequestedTime = Math.trunc(record.severeImpact.currentlyInfected
     * (2 ** factor));
 
   // 15% percent calculation of impact and severe impact
-  record.impact.severeCasesByRequestedTime = Math.floor(0.15
+  record.impact.severeCasesByRequestedTime = Math.trunc(0.15
     * record.impact.infectionsByRequestedTime);
-  record.severeImpact.severeCasesByRequestedTime = Math.floor(0.15
+  record.severeImpact.severeCasesByRequestedTime = Math.trunc(0.15
     * record.severeImpact.infectionsByRequestedTime);
 
   // total number of hospitalBedsByRequestedTime for impact && severe impact
-  record.impact.hospitalBedsByRequestedTime = Math.floor((0.35 * data.totalHospitalBeds)
+  record.impact.hospitalBedsByRequestedTime = Math.trunc((0.35 * data.totalHospitalBeds)
     - record.impact.severeCasesByRequestedTime);
-  record.severeImpact.hospitalBedsByRequestedTime = Math.floor((0.35 * data.totalHospitalBeds)
+  record.severeImpact.hospitalBedsByRequestedTime = Math.trunc((0.35 * data.totalHospitalBeds)
     - record.severeImpact.severeCasesByRequestedTime);
 
   // casesForICUByRequestedTime for impact && severe impact
-  record.impact.casesForICUByRequestedTime = Math.floor(0.05
+  record.impact.casesForICUByRequestedTime = Math.trunc(0.05
     * record.impact.infectionsByRequestedTime);
-  record.severeImpact.casesForICUByRequestedTime = Math.floor(0.05
+  record.severeImpact.casesForICUByRequestedTime = Math.trunc(0.05
     * record.severeImpact.infectionsByRequestedTime);
 
   // casesForVentilatorsByRequestedTime for impact && severe impact
-  record.impact.casesForVentilatorsByRequestedTime = Math.floor(0.02
+  record.impact.casesForVentilatorsByRequestedTime = Math.trunc(0.02
     * record.impact.infectionsByRequestedTime);
-  record.severeImpact.casesForVentilatorsByRequestedTime = Math.floor(0.02
+  record.severeImpact.casesForVentilatorsByRequestedTime = Math.trunc(0.02
     * record.severeImpact.infectionsByRequestedTime);
 
   // estimation of how much money the economy is likely to lose daily form impact && severe impact
-  record.impact.dollarsInFlight = Math.floor((record.impact.infectionsByRequestedTime
+  record.impact.dollarsInFlight = Math.trunc((record.impact.infectionsByRequestedTime
     * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD));
-  record.severeImpact.dollarsInFlight = Math.floor((record.severeImpact.infectionsByRequestedTime
+  record.severeImpact.dollarsInFlight = Math.trunc((record.severeImpact.infectionsByRequestedTime
     * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD));
 
   return record;
