@@ -17,7 +17,7 @@ const covid19ImpactEstimator = (data) => {
     calDay = period;
   } else if (data.periodType === 'weeks') {
     calDay = period * 7;
-  } else if (data.periodType === 'month') {
+  } else if (data.periodType === 'months') {
     calDay = period * 30;
   }
   const factor = Math.trunc(calDay / 3);
