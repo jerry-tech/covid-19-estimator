@@ -52,9 +52,9 @@ const covid19ImpactEstimator = (data) => {
 
   // estimation of how much money the economy is likely to lose daily form impact && severe impact
   record.impact.dollarsInFlight = Math.trunc((record.impact.infectionsByRequestedTime
-    * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD));
+    * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD) / calDay);
   record.severeImpact.dollarsInFlight = Math.trunc((record.severeImpact.infectionsByRequestedTime
-    * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD));
+    * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD) / calDay);
 
   return record;
 };
