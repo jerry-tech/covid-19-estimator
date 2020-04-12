@@ -20,7 +20,7 @@ const covid19ImpactEstimator = (data) => {
   } else if (data.periodType === 'month') {
     calDay = period * 30;
   }
-  const factor = (calDay / 3);
+  const factor = Math.trunc(calDay / 3);
   record.impact.infectionsByRequestedTime = Math.floor(record.impact.currentlyInfected
     * (2 ** factor));
   record.severeImpact.infectionsByRequestedTime = Math.floor(record.severeImpact.currentlyInfected
