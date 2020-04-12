@@ -27,10 +27,10 @@ const covid19ImpactEstimator = (data) => {
     * (2 ** factor));
 
   // 15% percent calculation of impact and severe impact
-  record.impact.severeCasesByRequestedTime = Math.floor(0.15
-    * record.impact.infectionsByRequestedTime);
-  record.severeImpact.severeCasesByRequestedTime = Math.floor(0.15
-    * record.severeImpact.infectionsByRequestedTime);
+  record.impact.severeCasesByRequestedTime = 0.15
+    * record.impact.infectionsByRequestedTime;
+  record.severeImpact.severeCasesByRequestedTime = 0.15
+    * record.severeImpact.infectionsByRequestedTime;
 
   // total number of hospitalBedsByRequestedTime for impact && severe impact
   record.impact.hospitalBedsByRequestedTime = Math.floor((0.35 * data.totalHospitalBeds)
@@ -55,8 +55,6 @@ const covid19ImpactEstimator = (data) => {
     * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD));
   record.severeImpact.dollarsInFlight = Math.floor((record.severeImpact.infectionsByRequestedTime
     * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD));
-
-  return record;
 };
 
 // const data = {
