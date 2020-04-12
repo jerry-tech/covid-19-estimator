@@ -1,3 +1,6 @@
+/* eslint-disable space-infix-ops */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-expressions */
 const covid19ImpactEstimator = (data) => {
   const realData = data;
   const record = {
@@ -71,6 +74,8 @@ const data = {
   reportedCases: 2747,
   population: 92931687,
   totalHospitalBeds: 678874
+
 };
+
 covid19ImpactEstimator(data);
 export default covid19ImpactEstimator;
