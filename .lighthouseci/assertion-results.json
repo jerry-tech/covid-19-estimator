@@ -2,154 +2,18 @@
   {
     "name": "minScore",
     "expected": 0.9,
-    "actual": 0.76,
+    "actual": 0.73,
     "values": [
-      0.47,
-      0.72,
-      0.76
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "speed-index",
-    "level": "warn",
-    "url": "https://quizzical-mestorf-6a8aaa.netlify.com/",
-    "auditTitle": "Speed Index",
-    "auditDocumentationLink": "https://web.dev/speed-index"
-  },
-  {
-    "name": "minScore",
-    "expected": 0.9,
-    "actual": 0.83,
-    "values": [
-      0.69,
-      0.77,
-      0.83
+      0.73,
+      0.15,
+      0.51
     ],
     "operator": ">=",
     "passed": false,
     "auditId": "max-potential-fid",
     "level": "warn",
-    "url": "https://quizzical-mestorf-6a8aaa.netlify.com/",
+    "url": "https://brave-engelbart-4c9579.netlify.com/",
     "auditTitle": "Max Potential First Input Delay",
     "auditDocumentationLink": "https://developers.google.com/web/updates/2018/05/first-input-delay"
-  },
-  {
-    "name": "minScore",
-    "expected": 1,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "color-contrast",
-    "level": "error",
-    "url": "https://quizzical-mestorf-6a8aaa.netlify.com/",
-    "auditTitle": "Background and foreground colors do not have a sufficient contrast ratio.",
-    "auditDocumentationLink": "https://web.dev/color-contrast/"
-  },
-  {
-    "name": "minScore",
-    "expected": 1,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "installable-manifest",
-    "level": "error",
-    "url": "https://quizzical-mestorf-6a8aaa.netlify.com/",
-    "auditTitle": "Web app manifest does not meet the installability requirements",
-    "auditDocumentationLink": "https://web.dev/installable-manifest"
-  },
-  {
-    "name": "minScore",
-    "expected": 1,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "offline-start-url",
-    "level": "error",
-    "url": "https://quizzical-mestorf-6a8aaa.netlify.com/",
-    "auditTitle": "`start_url` does not respond with a 200 when offline",
-    "auditDocumentationLink": "https://web.dev/offline-start-url"
-  },
-  {
-    "name": "minScore",
-    "expected": 1,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "service-worker",
-    "level": "error",
-    "url": "https://quizzical-mestorf-6a8aaa.netlify.com/",
-    "auditTitle": "Does not register a service worker that controls page and `start_url`",
-    "auditDocumentationLink": "https://web.dev/service-worker"
-  },
-  {
-    "name": "minScore",
-    "expected": 1,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "splash-screen",
-    "level": "error",
-    "url": "https://quizzical-mestorf-6a8aaa.netlify.com/",
-    "auditTitle": "Is not configured for a custom splash screen",
-    "auditDocumentationLink": "https://web.dev/splash-screen"
-  },
-  {
-    "name": "minScore",
-    "expected": 1,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "themed-omnibox",
-    "level": "error",
-    "url": "https://quizzical-mestorf-6a8aaa.netlify.com/",
-    "auditTitle": "Does not set a theme color for the address bar.",
-    "auditDocumentationLink": "https://web.dev/themed-omnibox"
-  },
-  {
-    "name": "minScore",
-    "expected": 1,
-    "actual": 0,
-    "values": [
-      0,
-      0,
-      0
-    ],
-    "operator": ">=",
-    "passed": false,
-    "auditId": "works-offline",
-    "level": "error",
-    "url": "https://quizzical-mestorf-6a8aaa.netlify.com/",
-    "auditTitle": "Current page does not respond with a 200 when offline",
-    "auditDocumentationLink": "https://web.dev/works-offline"
   }
 ]
