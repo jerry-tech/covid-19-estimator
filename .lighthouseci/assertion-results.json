@@ -1,6 +1,40 @@
 [
   {
     "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.76,
+    "values": [
+      0.47,
+      0.72,
+      0.76
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "speed-index",
+    "level": "warn",
+    "url": "https://quizzical-mestorf-6a8aaa.netlify.com/",
+    "auditTitle": "Speed Index",
+    "auditDocumentationLink": "https://web.dev/speed-index"
+  },
+  {
+    "name": "minScore",
+    "expected": 0.9,
+    "actual": 0.83,
+    "values": [
+      0.69,
+      0.77,
+      0.83
+    ],
+    "operator": ">=",
+    "passed": false,
+    "auditId": "max-potential-fid",
+    "level": "warn",
+    "url": "https://quizzical-mestorf-6a8aaa.netlify.com/",
+    "auditTitle": "Max Potential First Input Delay",
+    "auditDocumentationLink": "https://developers.google.com/web/updates/2018/05/first-input-delay"
+  },
+  {
+    "name": "minScore",
     "expected": 1,
     "actual": 0,
     "values": [
