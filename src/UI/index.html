@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Covid-19 Estimator">
     <title>Covid-19 Estimator</title>
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="/node_modules//w3-css/3/w3.css">
+    <link rel="stylesheet" href="w3.css">
 </head>
 
 <body>
@@ -16,7 +17,7 @@
                 <a id="title" class="w3-bar-item w3-text-white"><b>COVID-19 ESTIMATOR</b></a>
                 <!-- Float links to the right. Hide them on small screens -->
                 <div id="navlinks" class="w3-right w3-hide-small">
-                    <a class="w3-bar-item w3-button w3-card w3-red w3-hover-white" href="cdc">Visit CDC</a>
+                    <a class="w3-bar-item w3-button w3-card w3-red w3-hover-white" href="cdc.gov">Visit CDC</a>
                 </div>
             </div>
         </div>
@@ -26,42 +27,44 @@
         <main class="w3-margin-top">
             <aside class="w3-left w3-card-16 leftcont">
 
-                <form id="formid" class="w3-form">
+                <form id="formid" name="covid" class="w3-form">
+                    <i>Note: Projections are calculated with an average age of 19.7, average daily income of $4 and an average income population of 0.73% for Africa</i>
                     <div class="w3-row w3-card-16 w3-margin-top innerconter">
                         <aside class="w3-margin">
                             <!----------------------------------->
                             <div class="w3-container w3-third w3-block w3-margin-bottom">
                                 <aside class="w3-container">
-                                    <label>Population</label><br>
-                                    <input class="w3-input w3-threequarter w3-animate-input" required type="number"
-                                        name="data-population"><br>
+                                    <label for="data-population">Population</label><br>
+                                    <input class="w3-input w3-twothird w3-animate-input" required type="number"
+                                        placeholder="Population" id="data-population"><br>
                                 </aside><br><br>
                                 <aside class="w3-container">
-                                    <label>Time Elapsed</label><br>
-                                    <input class="w3-input w3-threequarter w3-animate-input" required type="number"
-                                        name="data-time-to-elapse">
+                                    <label for="data-time-to-elapse">Time Elapsed</label><br>
+                                    <input class="w3-input w3-twothird w3-animate-input" required type="number"
+                                        placeholder="Time Elapsed" id="data-time-to-elapse">
                                 </aside>
                             </div>
                             <!-- ----------------------------- -->
-                            <div class="w3-container w3-third w3-block w3-margin-bottom">
+                            <div class="w3-container w3-twothird w3-block w3-margin-bottom">
                                 <aside class="w3-container">
-                                    <label>Reported Cases</label><br>
-                                    <input class="w3-input w3-threequarter w3-animate-input" required type="number"
-                                        name="data-reported-cases"><br>
+                                    <label for="data-reported-cases">Reported Cases</label><br>
+                                    <input class="w3-input w3-twothird w3-animate-input" required type="number"
+                                        placeholder="Reported Cases" id="data-reported-cases"><br>
                                 </aside><br><br>
                                 <aside class="w3-container">
-                                    <label>Total Hospital Beds</label><br>
-                                    <input class="w3-input w3-threequarter w3-animate-input" required type="number"
-                                        name="data-total-hospital-beds">
+                                    <label for="data-total-hospital-beds">Total Hospital Beds</label><br>
+                                    <input class="w3-input w3-twothird w3-animate-input" required type="number"
+                                        placeholder="Hospital Beds" id="data-total-hospital-beds">
                                 </aside>
                             </div>
                             <!-------------------------------- -->
-                            <div class="w3-container w3-third w3_block w3-margin-bottom">
-                                <div class=" w3-margin-bottom" style="display: flex; align-items: baseline;">
-                                    <label>Period Type</label>
+                            <div class="w3-container w3-threequarter w3_block w3-margin-left w3-margin-bottom" id="selector">
+                                <div class="w3-margin-bottom" style="display: flex; align-items: baseline;">
+                                    <label for="data-period-type">Period Type</label>
                                     <figure>
-                                        <select class="w3-rest w3-input w3-animate-input" name="data-period-type"
+                                        <select class="w3-rest w3-input w3-animate-input" id="data-period-type"
                                             required>
+                                            <option value="Data_Period_type">Data Period type</option>
                                             <option value="days">Days</option>
                                             <option value="weeks">Weeks</option>
                                             <option value="months">Months</option>
@@ -69,19 +72,52 @@
                                     </figure>
                                 </div>
                                 <div class="w3-margin-top">
-                                    <input type="submit" name="data-go-estimate" value="Estimate Data"
-                                        class="w3-card w3-button w3-threequarter w3-hover-border-red w3-red">
+                                    <button type="button" name="data-go-estimate"
+                                        class="w3-card w3-button w3-threequarter w3-hover-border-red w3-red"
+                                        onclick="submitForm()">Estimate Data</button>
                                 </div>
                             </div>
-
                     </div>
+               </form>
+            
+               <aside class="w3-container w3-margin-bottom" id="reest">
+                <h3 class="w3-center" style="visibility: hidden;">Estimated Result</h3>
+                 <main class="w3-card-16" id="result">
+                   <div class="w3-container">
+                     <h4 class="w3-margin-left">Minimum Impact</h4>
+                     <ul class="w3-ul">
+                       <li>Currently Infected : <span id="currimpactinfectx"> N/A </span></li>
+                       <li>Infections By RequestedTime  : <span id="infectbytimex"> N/A </span></li>
+                       <li>SevereCases By RequestedTime  : <span id="severbytimex"> N/A </span></li>
+                       <li>Hospital Beds By RequestedTime  : <span id="hospitalbedsx"> N/A </span></li>
+                       <li>Cases For ICU By RequestedTime  : <span id="icutimex"> N/A </span></li>
+                       <li>Cases For Ventilators By RequestedTime  : <span id="venttimex"> N/A </span></li>
+                       <li>Dollars In Flight  : <span id="dollarfilx"> N/A </span></li>
+                      
+                     </ul>
+                   </div>
+                   <div class="w3-container">
+                     <h4 class="w3-margin-left">Severe Impact</h4>
+                     <ul class="w3-ul">
+                        <li>Currently Infected : <span id="currimpactinfecty"> N/A </span></li>
+                        <li>Infections By RequestedTime  : <span id="infectbytimey"> N/A </span></li>
+                        <li>SevereCases By RequestedTime  : <span id="severbytimey"> N/A </span></li>
+                        <li>Hospital Beds By RequestedTime  : <span id="hospitalbedsy"> N/A </span></li>
+                        <li>Cases For ICU By RequestedTime  : <span id="icutimey"> N/A </span></li>
+                        <li>Cases For Ventilators By RequestedTime  : <span id="venttimey"> N/A </span></li>
+                        <li>Dollars In Flight  : <span id="dollarfily"> N/A </span></li>
+                     </ul>
+                   </div>
+                 </main>
+         
+               </aside>
 
             </aside>
 
-            </form>
-            </aside>
+           
         </main>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
